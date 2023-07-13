@@ -1,7 +1,14 @@
 import colors from 'vuetify/es5/util/colors'
 
+// const dotenv = require('dotenv')
+
+import dotenv from 'dotenv'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
+  ssr: false,
+
   head: {
     titleTemplate: '%s - testDeploy',
     title: 'testDeploy',
@@ -37,6 +44,11 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
+  env: {
+    // ...dotenv.config({ path: `./.env.${process.env.NODE_ENV}` }).parsed
+    ...dotenv.config({ path: `./.env.development` }).parsed
+  },
+
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -58,4 +70,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  server: {
+    port: process.env.SERVER_PORT,
+    host: process.env.SERVER_HOST
+  }
 }
