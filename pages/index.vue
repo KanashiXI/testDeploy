@@ -83,5 +83,8 @@
 <script>
 export default {
   name: 'IndexPage',
+  fetch() {
+    // console.log('bjlaaaaaaaaaaaaaa');
+  }
 }
 </script>
